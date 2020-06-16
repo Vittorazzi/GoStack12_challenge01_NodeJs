@@ -68,7 +68,7 @@ app.post("/repositories/:id/like", (request, response) => {
 
   const repositoryIndex = repositories.findIndex(repository => repository.id === id);
   const repositoryObj = repositories.find(repository => repository.id === id);
-  const like = repositoryObj.likes + 1;
+  const like = repositoryObj ? repositoryObj.likes + 1 : null;
 
   if (repositoryIndex < 0){
       return response.status(400).json({Error : "Repository not found!"})
